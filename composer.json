@@ -41,6 +41,7 @@
         "symfony/twig-bundle": "6.2.*",
         "symfony/validator": "6.2.*",
         "symfony/web-link": "6.2.*",
+        "symfony/webpack-encore-bundle": "^1.16",
         "symfony/yaml": "6.2.*",
         "tectalic/openai": "^1.4",
         "twig/extra-bundle": "^2.12|^3.0",
