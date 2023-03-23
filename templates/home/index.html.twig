@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche d'artistes{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Recherche d'artistes</h1>
+
+        {{ form_start(artistForm) }}
+        {{ form_row(artistForm.artistQuery) }}
+        {{ form_row(artistForm.submit) }}
+        {{ form_end(artistForm) }}
+
+        {% if artistSuggestions is not null %}
+            <div class="artist-suggestions">
+                <h2>Suggestions d'artistes :</h2>
+                <ul>
+                    {% for artist in artistSuggestions %}
+                        <li>{{ artist }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

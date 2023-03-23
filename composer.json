@@ -11,8 +11,10 @@
         "doctrine/doctrine-bundle": "^2.8",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.14",
+        "nyholm/psr7": "^1.5",
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.16",
+        "psr/http-client": "^1.0",
         "sensio/framework-extra-bundle": "^6.1",
         "symfony/asset": "6.2.*",
         "symfony/console": "6.2.*",
@@ -40,6 +42,7 @@
         "symfony/validator": "6.2.*",
         "symfony/web-link": "6.2.*",
         "symfony/yaml": "6.2.*",
+        "tectalic/openai": "^1.4",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
     },
