@@ -22,7 +22,7 @@ class OpenAiService
         $openAiKey = $this->parameterBag->get('OPENAI_API_KEY');
         $httpClient = new Psr18Client();
         $openAiClient = Manager::build($httpClient, new Authentication($openAiKey));
-        $prompt = "donne moi 10 artistes sous forme de liste structurée qui partagent les mêmes influences ou style musical que $query: \n\n";
+        $prompt = "donne moi une dizaine d'artistes émergents qui partagent les mêmes influences ou style musical que $query: \n\n";
 
         $request = $openAiClient->chatCompletions()->create(
         new CreateRequest([
