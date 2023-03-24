@@ -23,6 +23,7 @@ class OpenAiService
         $httpClient = new Psr18Client();
         $openAiClient = Manager::build($httpClient, new Authentication($openAiKey));
         $prompt = "donne moi une dizaine d'artistes émergents qui partagent les mêmes influences ou style musical que $query: \n\n";
+        $prompt = "Donne moi une dizaine d'artistes similaires à cet artiste, donne un lien pour acheter la musique de cet artiste sur bandcamp et suggère d'autres noms de plateformes sans url. Si tu n'es pas en mesure d'avoir un url de bandcamp pour l'artiste donné, réponds par une phrase qui induit une possibilité d'url invalide et suggère uniquement des noms de plateforme sans url et l'url direct de https://bandcamp.com/ pour faire une recherche manuelle: $query: \n\n";
 
         $request = $openAiClient->chatCompletions()->create(
         new CreateRequest([
@@ -32,7 +33,7 @@ class OpenAiService
                 ['role' => 'user', 'content' => $prompt],
                 ],
                 'temperature' => 0.7,
-                'max_tokens' => 500,
+                'max_tokens' => 1000,
                 'frequency_penalty' => 0.3,
                 'presence_penalty' => 0.5,
                 'n' => 1,
