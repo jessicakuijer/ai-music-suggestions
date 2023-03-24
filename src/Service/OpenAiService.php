@@ -17,12 +17,36 @@ class OpenAiService
         $this->parameterBag = $parameterBag;
     }
 
+    private function formatResponse(string $response): string
+{
+    // Transforme les URL en liens cliquables
+    $response = preg_replace_callback(
+        '~\b(?:https?://|www\.)\S+\b~',
+        function ($matches) {
+            $url = $matches[0];
+            $urlWithPrefix = $url;
+            if (strpos($url, 'http') !== 0) {
+                $urlWithPrefix = "http://" . $url;
+            }
+
+            return '<a href="' . $urlWithPrefix . '" target="_blank">' . $url . '</a>';
+        },
+        $response
+    );
+
+    // Ajoute un retour à la ligne après chaque point qui suit un mot, en ignorant les URL
+    $response = preg_replace('/(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.(?!(com|org|net|gov|edu|io|co|us)\b))\s+/', "<br>", $response);
+
+    return $response;
+}
+
+
     public function getArtistSuggestions(string $query): array
     {
         $openAiKey = $this->parameterBag->get('OPENAI_API_KEY');
         $httpClient = new Psr18Client();
         $openAiClient = Manager::build($httpClient, new Authentication($openAiKey));
-        $prompt = "donne moi une dizaine d'artistes émergents qui partagent les mêmes influences ou style musical que $query: \n\n";
+        
         $prompt = "Donne moi une dizaine d'artistes similaires à cet artiste, donne un lien pour acheter la musique de cet artiste sur bandcamp et suggère d'autres noms de plateformes sans url. Si tu n'es pas en mesure d'avoir un url de bandcamp pour l'artiste donné, réponds par une phrase qui induit une possibilité d'url invalide et suggère uniquement des noms de plateforme sans url et l'url direct de https://bandcamp.com/ pour faire une recherche manuelle: $query: \n\n";
 
         $request = $openAiClient->chatCompletions()->create(
@@ -49,6 +73,7 @@ class OpenAiService
             isset($request->choices[0]->message->content)
         ) {
             $response = $request->choices[0]->message->content;
+            $response = $this->formatResponse($response);
         } else {
             $response = "Une erreur est survenue dans la réponse d'OpenAI.";
         }
