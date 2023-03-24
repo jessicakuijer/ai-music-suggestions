@@ -18,8 +18,12 @@ class ArtistFormType extends AbstractType
                 'attr' => ['class' => 'form-control'],
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Rechercher',
-                'attr' => ['class' => 'btn btn-primary'],
+                'attr' => [
+                    'hx-post' => '/',
+                    'hx-target' => '#response',
+                    'hx-trigger' => 'click',
+                    'hx-swap' => 'outerHTML'
+                ]
             ])
         ;
     }

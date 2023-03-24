@@ -1,0 +1,12 @@
+<div id="response">
+    {% if artistSuggestions is not null %}
+    <div class="artist-suggestions">
+        <h2>Suggestions d'artistes :</h2>
+        <ul class="list-group">
+            {% for artist in artistSuggestions %}
+                <li class="list-group-item">{{ artist }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</div>

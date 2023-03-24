@@ -16,21 +16,19 @@
                         {{ form_widget(artistForm.artistQuery, {'attr': {'class': 'form-control', 'placeholder': 'Madonna'}}) }}
                     </div>
                     <div class="form-group">
-                        {{ form_widget(artistForm.submit, {'attr': {'class': 'btnContact', 'value': 'Rechercher'}}) }}
+                        {{ form_widget(artistForm.submit, {
+                            label_html: true,
+                            label: 'Rechercher <img class="htmx-indicator" src="/loader.svg"/>',
+                            attr: {
+                                class: 'btnContact',
+                                'hx-indicator': '.htmx-indicator',
+                                'hx-swap': 'outerHTML'
+                            }
+                        }) }}
                     </div>
                 </div>
             </div>
         {{ form_end(artistForm) }}
-
-        {% if artistSuggestions is not null %}
-            <div class="artist-suggestions">
-                <h2>Suggestions d'artistes :</h2>
-                <ul class="list-group">
-                    {% for artist in artistSuggestions %}
-                        <li class="list-group-item">{{ artist }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-        {% endif %}
+         <div id="response"></div>
     </div>
 {% endblock %}

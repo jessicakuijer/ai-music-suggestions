@@ -23,6 +23,9 @@ class HomeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $artistQuery = $form->get('artistQuery')->getData();
             $artistSuggestions = $OpenAiService->getArtistSuggestions($artistQuery);
+            return $this->render('home/artists.html.twig', [
+                'artistSuggestions' => $artistSuggestions ?? null,
+            ]);
         }
 
         return $this->render('home/index.html.twig', [
