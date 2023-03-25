@@ -8,12 +8,12 @@
             <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
         </div>
         {{ form_start(artistForm, {'attr': {'class': 'form-horizontal'}}) }}
-            <h2>Vous ne savez pas quoi écouter en ce moment? </h2>
+            <h2>Découvrez de nouveaux artistes à écouter. </h2>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        {{ form_label(artistForm.artistQuery, 'Recherche d\'artistes similaires à:', {'label_attr': {'class': 'control-label'}}) }}
-                        {{ form_widget(artistForm.artistQuery, {'attr': {'class': 'form-control', 'placeholder': 'Madonna'}}) }}
+                        {{ form_label(artistForm.artistQuery, 'Trouvez des artistes similaires à:', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_widget(artistForm.artistQuery, {'attr': {'class': 'form-control', 'placeholder': 'Madonna, The Beatles, etc.'}}) }}
                     </div>
                     <div class="form-group">
                         {{ form_widget(artistForm.submit, {

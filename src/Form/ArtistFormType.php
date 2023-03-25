@@ -14,7 +14,6 @@ class ArtistFormType extends AbstractType
     {
         $builder
             ->add('artistQuery', TextType::class, [
-                'label' => 'Madonna, The Beatles, etc.',
                 'attr' => ['class' => 'form-control'],
             ])
             ->add('submit', SubmitType::class, [
