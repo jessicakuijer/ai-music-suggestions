@@ -12,6 +12,7 @@ Symfony 6.2 webApp utilisant l'API d'[OpenAi ChatGPT-3.5-turbo](https://openai.c
 ## Demo
 
 DEMO : https://ai-music.herokuapp.com/
+Accès protégé par mot de passe. Si vous voulez tester, faites-moi signe ICI: https://linkedin.com/in/jessicakuijer ou par email: [@jessicakuijer](mailto:jessicakuijer@me.com)
   
 Description: Générateur d'artistes similaires à partir d'un artiste donné.
 
