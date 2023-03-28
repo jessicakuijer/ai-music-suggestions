@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "867270f3b619746da2f0326e57dec588",
+    "content-hash": "d94a4a25b670fa1e2c0ff35dfb7613d5",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -575,21 +575,21 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "2.8.3",
+            "version": "2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "fd67ba64db3c806f626a33dcab15a4db0c77652e"
+                "reference": "9819c00c2eea750b99902f244309b824911b72b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/fd67ba64db3c806f626a33dcab15a4db0c77652e",
-                "reference": "fd67ba64db3c806f626a33dcab15a4db0c77652e",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/9819c00c2eea750b99902f244309b824911b72b2",
+                "reference": "9819c00c2eea750b99902f244309b824911b72b2",
                 "shasum": ""
             },
             "require": {
                 "doctrine/cache": "^1.11 || ^2.0",
-                "doctrine/dbal": "^3.4.0",
+                "doctrine/dbal": "^3.6.0",
                 "doctrine/persistence": "^2.2 || ^3",
                 "doctrine/sql-formatter": "^1.0.1",
                 "php": "^7.4 || ^8.0",
@@ -605,11 +605,12 @@
             "conflict": {
                 "doctrine/annotations": ">=3.0",
                 "doctrine/orm": "<2.11 || >=3.0",
-                "twig/twig": "<1.34 || >=2.0,<2.4"
+                "twig/twig": "<1.34 || >=2.0 <2.4"
             },
             "require-dev": {
                 "doctrine/annotations": "^1 || ^2",
                 "doctrine/coding-standard": "^9.0",
+                "doctrine/deprecations": "^1.0",
                 "doctrine/orm": "^2.11 || ^3.0",
                 "friendsofphp/proxy-manager-lts": "^1.0",
                 "phpunit/phpunit": "^9.5.26 || ^10.0",
@@ -670,7 +671,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/DoctrineBundle/issues",
-                "source": "https://github.com/doctrine/DoctrineBundle/tree/2.8.3"
+                "source": "https://github.com/doctrine/DoctrineBundle/tree/2.9.0"
             },
             "funding": [
                 {
@@ -686,7 +687,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-03T09:32:42+00:00"
+            "time": "2023-03-23T20:02:57+00:00"
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
@@ -1658,7 +1659,7 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.291.0",
+            "version": "v0.292.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
@@ -1696,7 +1697,7 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
-                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.291.0"
+                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.292.0"
             },
             "time": "2023-03-13T21:05:11+00:00"
         },
@@ -2760,16 +2761,16 @@
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "1.7.0",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "1534aea9bde19a5c85c5d1e1f834ab63f4c5dcf5"
+                "reference": "dfc078e8af9c99210337325ff5aa152872c98714"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/1534aea9bde19a5c85c5d1e1f834ab63f4c5dcf5",
-                "reference": "1534aea9bde19a5c85c5d1e1f834ab63f4c5dcf5",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/dfc078e8af9c99210337325ff5aa152872c98714",
+                "reference": "dfc078e8af9c99210337325ff5aa152872c98714",
                 "shasum": ""
             },
             "require": {
@@ -2812,9 +2813,9 @@
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "support": {
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
-                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.7.0"
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.7.1"
             },
-            "time": "2023-03-12T10:13:29+00:00"
+            "time": "2023-03-27T19:02:04+00:00"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -9503,16 +9504,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.6.5",
+            "version": "9.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "86e761949019ae83f49240b2f2123fb5ab3b2fc5"
+                "reference": "b65d59a059d3004a040c16a82e07bbdf6cfdd115"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/86e761949019ae83f49240b2f2123fb5ab3b2fc5",
-                "reference": "86e761949019ae83f49240b2f2123fb5ab3b2fc5",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b65d59a059d3004a040c16a82e07bbdf6cfdd115",
+                "reference": "b65d59a059d3004a040c16a82e07bbdf6cfdd115",
                 "shasum": ""
             },
             "require": {
@@ -9585,7 +9586,8 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.5"
+                "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.6"
             },
             "funding": [
                 {
@@ -9601,7 +9603,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-09T06:34:10+00:00"
+            "time": "2023-03-27T11:43:46+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -11163,6 +11165,7 @@
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.1",
+        "ext-intl": "*",
         "ext-ctype": "*",
         "ext-iconv": "*"
     },
