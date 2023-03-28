@@ -11,7 +11,7 @@ Symfony 6.2 webApp utilisant l'API d'[OpenAi ChatGPT-3.5-turbo](https://openai.c
 
 ## Demo
 
-TBA
+DEMO : https://ai-music.herokuapp.com/
   
 Description: Générateur d'artistes similaires à partir d'un artiste donné.
 
