@@ -5,16 +5,29 @@ namespace App\Controller;
 use App\Form\ArtistFormType;
 use App\Service\OpenAiService;
 use App\Service\YoutubeService;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class HomeController extends AbstractController
 {
-    #[Route('/', name: 'home')]
-    public function index(Request $request, OpenAiService $OpenAiService, YoutubeService $youtubeService): Response
+    private ParameterBagInterface $parameterBag;
+
+    public function __construct(ParameterBagInterface $parameterBag)
     {
+        $this->parameterBag = $parameterBag;
+    }
+    
+    #[Route('/', name: 'home')]
+    public function index(Request $request, OpenAiService $OpenAiService, YoutubeService $youtubeService, SessionInterface $session): Response
+    {
+        if (!$session->get('isAuthenticated')) {
+            return $this->redirectToRoute('password_prompt');
+        }
+
         $form = $this->createForm(ArtistFormType::class);
         $form->handleRequest($request);
 
@@ -36,6 +49,25 @@ class HomeController extends AbstractController
             'artistSuggestions' => $artistSuggestions,
             'youtubeUrl' => $youtubeUrl,
         ]);
+    }
+
+    #[Route('/password-prompt', name: 'password_prompt')]
+    public function passwordPrompt(Request $request, SessionInterface $session): Response
+    {
+        $password = $this->parameterBag->get('PASSWORD_PROMPT');
+        if ($request->isMethod('POST')) {
+            $enteredPassword = $request->request->get('password');
+            $correctPassword = $password; // Changer pour votre mot de passe dans vos variables d'environnement
+
+            if ($enteredPassword === $correctPassword) {
+                $session->set('isAuthenticated', true);
+                return $this->redirectToRoute('home');
+            } else {
+                $this->addFlash('error', 'Mot de passe incorrect.');
+            }
+        }
+
+        return $this->render('home/password_prompt.html.twig');
     }
 }
 
