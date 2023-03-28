@@ -66,7 +66,6 @@ class HomeController extends AbstractController
                 $this->addFlash('error', 'Mot de passe incorrect.');
             }
         }
-
         return $this->render('home/password_prompt.html.twig');
     }
 }
