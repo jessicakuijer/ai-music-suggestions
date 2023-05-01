@@ -1,5 +1,10 @@
 framework:
     cache:
+        pools:
+            app.api_cache:
+                adapter: cache.adapter.filesystem
+                default_lifetime: 3600 # Durée de vie du cache en secondes (1 heure dans cet exemple)
+
         # Unique name of your app: used to compute stable namespaces for cache keys.
         #prefix_seed: your_vendor_name/app_name
 
