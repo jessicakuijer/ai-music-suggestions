@@ -10,6 +10,7 @@ variables:
         APP_ENV: 'prod'
         APP_DEBUG: '0'
 
+# les dependances
 dependencies:
     php:
         composer/composer: "^2"
