@@ -1,7 +1,6 @@
 name: app
-type: php:8.1
-# to find the supported versions for the 'nodejs' type.
-type: 'nodejs:18'
+type: php:8.1, nodejs:18
+
 build:
     flavor: composer
 disk: 1024
