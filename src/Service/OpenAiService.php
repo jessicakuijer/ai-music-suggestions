@@ -2,13 +2,14 @@
 
 namespace App\Service;
 
-use Tectalic\OpenAi\Authentication;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Tectalic\OpenAi\Manager;
-use Tectalic\OpenAi\Models\ChatCompletions\CreateRequest;
-use Symfony\Component\HttpClient\Psr18Client;
-use Symfony\Contracts\Cache\CacheInterface;
+use Tectalic\OpenAi\Authentication;
 use Symfony\Contracts\Cache\ItemInterface;
+use Symfony\Contracts\Cache\CacheInterface;
+use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\HttpClient\Psr18Client;
+use Tectalic\OpenAi\Models\ChatCompletions\CreateRequest;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class OpenAiService
 {
@@ -67,7 +68,9 @@ class OpenAiService
     private function callOpenAiApi(string $query): array
     {
     $openAiKey = $this->parameterBag->get('OPENAI_API_KEY');
-    $httpClient = new Psr18Client();
+    
+    $symfonyHttpClient = HttpClient::create(['timeout' => 120]); // Augmente le délai d'attente à 120 secondes
+    $httpClient = new Psr18Client($symfonyHttpClient);
     $openAiClient = Manager::build($httpClient, new Authentication($openAiKey));
 
     $prompt = "Tu es mélomane. En priorité, élabore une liste de dix artistes émergents et similaires à l'artiste recherché en donnant un lien pour acheter leur musique sur bandcamp et suggère d'autres noms de plateformes sans url. Tu peux justifier tes choix d'artistes similaires émergents si tu le souhaites. Enfin, si tu n'es pas en mesure d'avoir un url de bandcamp valide, réponds par une phrase qui induit une possibilité d'url invalide et suggère uniquement des noms de plateforme sans url et l'url direct de https://bandcamp.com/ pour faire une recherche manuelle. l'artiste auquel les artistes émergents doivent être similaires est : $query: \n\n";
