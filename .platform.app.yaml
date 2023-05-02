@@ -10,6 +10,10 @@ variables:
         APP_ENV: 'prod'
         APP_DEBUG: '0'
 
+dependencies:
+    php:
+        composer/composer: "^2"
+
 # Configurez les relations entre les services (bases de données, cache, etc.).
 #relationships:
     #database: "database:mysql"
