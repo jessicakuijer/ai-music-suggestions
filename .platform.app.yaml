@@ -1,5 +1,7 @@
 name: app
 type: php:8.1
+# to find the supported versions for the 'nodejs' type.
+type: 'nodejs:18'
 build:
     flavor: composer
 disk: 1024
@@ -25,9 +27,11 @@ hooks:
     build: |
         set -e
         composer install --no-dev --optimize-autoloader
+        yarn install
     deploy: |
         set -e
         bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
+        yarn run build
         bin/console cache:clear
 
 # Configurez les chemins pour les fichiers partagés entre les déploiements.
@@ -56,3 +60,5 @@ web:
                     allow: true
                 \.png$:
                     allow: true
+  commands: 
+    start: "node index.js"
