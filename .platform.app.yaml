@@ -11,9 +11,9 @@ variables:
         APP_DEBUG: '0'
 
 # Configurez les relations entre les services (bases de données, cache, etc.).
-relationships:
-    database: "database:mysql"
-    rediscache: "rediscache:redis"
+#relationships:
+    #database: "database:mysql"
+    #rediscache: "rediscache:redis"
 
 # Configurez les processus de déploiement et de build.
 hooks:
