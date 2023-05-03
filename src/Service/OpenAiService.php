@@ -73,7 +73,7 @@ class OpenAiService
     $httpClient = new Psr18Client($symfonyHttpClient);
     $openAiClient = Manager::build($httpClient, new Authentication($openAiKey));
 
-    $prompt = "Tu es mélomane. En priorité, élabore une liste de dix artistes émergents et similaires à l'artiste recherché en donnant un lien pour acheter leur musique sur bandcamp et suggère d'autres noms de plateformes sans url. Tu peux justifier tes choix d'artistes similaires émergents si tu le souhaites. Enfin, si tu n'es pas en mesure d'avoir un url de bandcamp valide, réponds par une phrase qui induit une possibilité d'url invalide et suggère uniquement des noms de plateforme sans url et l'url direct de https://bandcamp.com/ pour faire une recherche manuelle. l'artiste auquel les artistes émergents doivent être similaires est : $query: \n\n";
+    $prompt = "Tu es mélomane et tu dois élaborer une liste de dix artistes émergents et similaires à l'artiste recherché en donnant un lien pour acheter leur musique sur bandcamp. Si tu n'es pas en mesure d'avoir un url de bandcamp valide, réponds par une phrase qui induit une possibilité d'url invalide et suggère uniquement des noms de plateforme et l'url direct de https://bandcamp.com/ pour faire une recherche manuelle. Tu dois justifier tes choix d'artistes similaires émergents à la fin de la liste de manière générale. L'artiste auquel les artistes émergents doivent être similaires est : $query: \n\n";
 
     $request = $openAiClient->chatCompletions()->create(
         new CreateRequest([
@@ -82,15 +82,16 @@ class OpenAiService
                 ['role' => 'system', 'content' => 'You are a helpful assistant.'],
                 ['role' => 'user', 'content' => $prompt],
             ],
-            'temperature' => 0.7,
-            'max_tokens' => 1000,
-            'frequency_penalty' => 0.3,
-            'presence_penalty' => 0.5,
+            'temperature' => 0.5, // Réduisez la valeur de la température
+            'max_tokens' => 500, // Réduisez le nombre maximal de tokens
+            'frequency_penalty' => 0.2,
+            'presence_penalty' => 0.4,
             'n' => 1,
             'stop' => null,
             'best_of' => 1
-        ])
-    )->toModel();
+            ])
+        )->toModel();
+        
 
     if (
         isset($request->choices) &&
