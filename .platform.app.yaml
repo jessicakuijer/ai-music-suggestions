@@ -10,6 +10,7 @@ variables:
     php:
         APP_ENV: 'prod'
         APP_DEBUG: '0'
+        PASSWORD_PROMPT: 'music_is_my_life'
 
 # les dependances
 dependencies:
