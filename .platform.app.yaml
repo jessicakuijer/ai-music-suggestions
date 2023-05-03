@@ -7,20 +7,15 @@ disk: 1024
 
 # Renseignez les variables d'environnement pour votre application Symfony.
 variables:
+    # Configurez vos variables d'environnement ici.
     php:
         APP_ENV: 'prod'
         APP_DEBUG: '0'
-        PASSWORD_PROMPT: 'music_is_my_life'
 
 # les dependances
 dependencies:
     php:
         composer/composer: "^2"
-
-# Configurez les relations entre les services (bases de données, cache, etc.).
-#relationships:
-    #database: "database:mysql"
-    #rediscache: "rediscache:redis"
 
 # Configurez les processus de déploiement et de build.
 hooks:
