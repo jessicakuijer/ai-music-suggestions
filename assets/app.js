@@ -53,8 +53,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 function (event) {
                     if (event.detail.xhr.status === 503) {
                         clearInterval(intervalId);
-                        loadingMessage.style.display = 'none'; // Cache la div de chargement
-                        errorMessage.textContent = "Service inaccessible, veuillez m'en excuser et réitérer la recherche ultérieurement s'il vous plaît.";
+                        // Ne cache pas la div de chargement en cas d'erreur 503
+                        loadingText.textContent = "Service inaccessible, veuillez m'en excuser et réitérer la recherche ultérieurement s'il vous plaît.";
                     }
                 },
                 { once: true }
