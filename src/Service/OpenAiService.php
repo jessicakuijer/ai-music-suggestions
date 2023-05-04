@@ -69,7 +69,7 @@ class OpenAiService
     
     $messages = [
         ['role' => 'system', 'content' => 'You are a helpful assistant.'],
-        ['role' => 'user', 'content' => "Je recherche une dizaine d'artistes émergents similaires à $query."],
+        ['role' => 'user', 'content' => "Je recherche cinq artistes émergents similaires à $query."],
         ['role' => 'user', 'content' => "Fournissez un lien pour acheter leur musique sur Bandcamp pour chaque artiste suggéré."],
         ['role' => 'user', 'content' => "Si un lien Bandcamp valide n'est pas disponible, mentionnez les noms des plateformes et l'URL directe de https://bandcamp.com/ pour effectuer une recherche manuelle."],
         ['role' => 'user', 'content' => "Justifiez vos choix d'artistes similaires émergents à la fin de la liste de manière générale."]
