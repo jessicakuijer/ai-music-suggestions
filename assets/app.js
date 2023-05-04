@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const submitButton = document.getElementById('artist_form_submit');
     const loadingMessage = document.getElementById('loading-message');
     const loadingText = document.getElementById('loading-text');
+    const errorMessage = document.getElementById('error-message');
 
     if (submitButton) {
         submitButton.addEventListener('click', function () {
@@ -45,7 +46,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 { once: true }
             );
+
+            // Gère les erreurs 503
+            document.body.addEventListener(
+                'htmx:afterOnLoad',
+                function (event) {
+                    if (event.detail.xhr.status === 503) {
+                        clearInterval(intervalId);
+                        loadingMessage.style.display = 'none'; // Cache la div de chargement
+                        errorMessage.textContent = "Service inaccessible, veuillez m'en excuser et réitérer la recherche ultérieurement s'il vous plaît.";
+                    }
+                },
+                { once: true }
+            );
         });
     }
 });
-
