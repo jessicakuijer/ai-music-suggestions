@@ -81,8 +81,8 @@ class OpenAiService
             'messages' => $messages,
             'temperature' => 0.5, // Réduisez la valeur de la température
             'max_tokens' => 500, // Réduisez le nombre maximal de tokens
-            'frequency_penalty' => 0.2,
-            'presence_penalty' => 0.4,
+            'frequency_penalty' => 0.5,
+            'presence_penalty' => 0.6,
             'n' => 1,
             'stop' => null,
             'best_of' => 1
