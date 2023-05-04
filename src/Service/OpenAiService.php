@@ -4,8 +4,6 @@ namespace App\Service;
 
 use Tectalic\OpenAi\Manager;
 use Tectalic\OpenAi\Authentication;
-use Symfony\Contracts\Cache\ItemInterface;
-use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpClient\Psr18Client;
 use Tectalic\OpenAi\Models\ChatCompletions\CreateRequest;
@@ -16,10 +14,9 @@ class OpenAiService
     private ParameterBagInterface $parameterBag;
     private $cache;
 
-    public function __construct(ParameterBagInterface $parameterBag, CacheInterface $apiCache)
+    public function __construct(ParameterBagInterface $parameterBag)
     {
         $this->parameterBag = $parameterBag;
-        $this->cache = $apiCache;
     }
 
     private function formatResponse(string $response): string
@@ -54,15 +51,10 @@ class OpenAiService
 
     public function getArtistSuggestions(string $query): array
     {
-        // Utilisez le pool de cache pour stocker et récupérer les résultats de l'API
-        return $this->cache->get(md5($query), function (ItemInterface $item) use ($query) {
-            $item->expiresAfter(3600); // Durée de vie du cache en secondes (1 heure dans cet exemple)
-    
             // Appelez l'API et récupérez les données
             $apiData = $this->callOpenAiApi($query);
     
             return $apiData;
-        });
     }
 
     private function callOpenAiApi(string $query): array
@@ -73,15 +65,20 @@ class OpenAiService
     $httpClient = new Psr18Client($symfonyHttpClient);
     $openAiClient = Manager::build($httpClient, new Authentication($openAiKey));
 
-    $prompt = "Tu es mélomane et tu dois élaborer une liste de dix artistes émergents et similaires à l'artiste recherché en donnant un lien pour acheter leur musique sur bandcamp. Si tu n'es pas en mesure d'avoir un url de bandcamp valide, réponds par une phrase qui induit une possibilité d'url invalide et suggère uniquement des noms de plateforme et l'url direct de https://bandcamp.com/ pour faire une recherche manuelle. Tu dois justifier tes choix d'artistes similaires émergents à la fin de la liste de manière générale. L'artiste auquel les artistes émergents doivent être similaires est : $query: \n\n";
+    /* $prompt = "Tu es mélomane et tu dois élaborer une liste de dix artistes émergents et similaires à l'artiste recherché en donnant un lien pour acheter leur musique sur bandcamp. Si tu n'es pas en mesure d'avoir un url de bandcamp valide, réponds par une phrase qui induit une possibilité d'url invalide et suggère uniquement des noms de plateforme et l'url direct de https://bandcamp.com/ pour faire une recherche manuelle. Tu dois justifier tes choix d'artistes similaires émergents à la fin de la liste de manière générale. L'artiste auquel les artistes émergents doivent être similaires est : $query: \n\n"; */
+    
+    $messages = [
+        ['role' => 'system', 'content' => 'You are a helpful assistant.'],
+        ['role' => 'user', 'content' => "Je recherche une dizaine d'artistes émergents similaires à $query."],
+        ['role' => 'user', 'content' => "Fournissez un lien pour acheter leur musique sur Bandcamp pour chaque artiste suggéré."],
+        ['role' => 'user', 'content' => "Si un lien Bandcamp valide n'est pas disponible, mentionnez les noms des plateformes et l'URL directe de https://bandcamp.com/ pour effectuer une recherche manuelle."],
+        ['role' => 'user', 'content' => "Justifiez vos choix d'artistes similaires émergents à la fin de la liste de manière générale."]
+        ];
 
     $request = $openAiClient->chatCompletions()->create(
         new CreateRequest([
             'model' => 'gpt-4',
-            'messages' => [
-                ['role' => 'system', 'content' => 'You are a helpful assistant.'],
-                ['role' => 'user', 'content' => $prompt],
-            ],
+            'messages' => $messages,
             'temperature' => 0.5, // Réduisez la valeur de la température
             'max_tokens' => 500, // Réduisez le nombre maximal de tokens
             'frequency_penalty' => 0.2,
