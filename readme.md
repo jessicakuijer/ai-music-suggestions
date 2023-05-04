@@ -1,7 +1,7 @@
 
 # ai-Music-suggestions-ChatGPT
 
-Symfony 6.2 webApp utilisant l'API d'[OpenAi ChatGPT-4](https://openai.com/product/gpt-4) et [HTMX](https://htmx.org/) pour générer une liste d'autres artistes similaires à partir d'un artiste donné.
+Symfony 6.2 webApp utilisant l'API d'[OpenAi ChatGPT-3.5-turbo](https://openai.com/product/gpt-4) et [HTMX](https://htmx.org/) pour générer une liste d'autres artistes similaires à partir d'un artiste donné.
 
 ## API Reference
 
@@ -34,7 +34,7 @@ ou
 ```
 php -S localhost -t public
 ```  
-Compiler les assets et utilisation de TailwindCSS via Webpack Encore:  
+Compiler les assets JS et CSS via Webpack Encore:  
 ```
 npm run watch (ou run build pour déployer en production)
 ```  
