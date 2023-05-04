@@ -22,9 +22,12 @@
                             attr: {
                                 class: 'btnContact',
                                 'hx-indicator': '.htmx-indicator',
-                                'hx-swap': 'outerHTML'
-                            }
+                                'hx-swap': 'outerHTML',
+                                }
                         }) }}
+                        <div id="loading-message" style="display: none;">
+                            <span id="loading-text"></span>
+                        </div>
                     </div>
                 </div>
             </div>
