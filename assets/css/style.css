@@ -52,3 +52,46 @@ body{
 .response-list {
     margin-bottom: 30px;
 }
+
+.tv-frame {
+    position: relative;
+    width: 560px;
+    height: 315px;
+    background-color: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    margin: 0 auto;
+}
+
+.tv-frame::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    border-radius: 10px 10px 0 0;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.tv-frame::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    border-radius: 0 0 10px 10px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.youtube-video-container iframe {
+    position: absolute;
+    top: 10px;
+    left: 0;
+}

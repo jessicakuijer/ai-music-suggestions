@@ -1,7 +1,9 @@
 <div id="response">
     {% if youtubeUrl %}
     <div class="youtube-video-container">
-        <iframe width="560" height="315" src="{{ youtubeUrl|replace({'https://www.youtube.com/watch?v=': 'https://www.youtube.com/embed/'}) }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="tv-frame">
+            <iframe width="560" height="315" src="{{ youtubeUrl|replace({'https://www.youtube.com/watch?v=': 'https://www.youtube.com/embed/'}) }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
     </div>
     <p class="video-not-available">
         Si la vidéo ne s'affiche pas correctement, vous pouvez la regarder sur <a href="{{ youtubeUrl }}" target="_blank">YouTube</a>.
@@ -17,5 +19,4 @@
         </ul>
     </div>
     {% endif %}
-
 </div>
