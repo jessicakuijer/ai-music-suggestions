@@ -12,7 +12,6 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 class OpenAiService
 {
     private ParameterBagInterface $parameterBag;
-    private $cache;
 
     public function __construct(ParameterBagInterface $parameterBag)
     {
@@ -64,8 +63,6 @@ class OpenAiService
     $symfonyHttpClient = HttpClient::create(['timeout' => 120]); // Augmente le délai d'attente à 120 secondes
     $httpClient = new Psr18Client($symfonyHttpClient);
     $openAiClient = Manager::build($httpClient, new Authentication($openAiKey));
-
-    /* $prompt = "Tu es mélomane et tu dois élaborer une liste de dix artistes émergents et similaires à l'artiste recherché en donnant un lien pour acheter leur musique sur bandcamp. Si tu n'es pas en mesure d'avoir un url de bandcamp valide, réponds par une phrase qui induit une possibilité d'url invalide et suggère uniquement des noms de plateforme et l'url direct de https://bandcamp.com/ pour faire une recherche manuelle. Tu dois justifier tes choix d'artistes similaires émergents à la fin de la liste de manière générale. L'artiste auquel les artistes émergents doivent être similaires est : $query: \n\n"; */
     
     $messages = [
         ['role' => 'system', 'content' => 'You are a helpful assistant.'],
