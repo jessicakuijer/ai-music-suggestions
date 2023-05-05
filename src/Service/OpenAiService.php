@@ -66,7 +66,8 @@ class OpenAiService
     
     $messages = [
         ['role' => 'system', 'content' => 'You are a helpful assistant.'],
-        ['role' => 'user', 'content' => "Je recherche cinq artistes émergents similaires à $query."],
+        ['role' => 'user', 'content' => "Premièrement, rédige une très courte biographie d'un paragraphe de $query."],
+        ['role' => 'user', 'content' => "Je recherche ensuite cinq artistes émergents similaires à $query."],
         ['role' => 'user', 'content' => "Fournissez un lien pour acheter leur musique sur Bandcamp pour chaque artiste suggéré."],
         ['role' => 'user', 'content' => "Si un lien Bandcamp valide n'est pas disponible, mentionnez les noms des plateformes et l'URL directe de https://bandcamp.com/ pour effectuer une recherche manuelle."],
         ['role' => 'user', 'content' => "Justifiez vos choix d'artistes similaires émergents à la fin de la liste de manière générale."]
@@ -77,7 +78,7 @@ class OpenAiService
             'model' => 'gpt-3.5-turbo',
             'messages' => $messages,
             'temperature' => 0.5, // Réduisez la valeur de la température
-            'max_tokens' => 500, // Réduisez le nombre maximal de tokens
+            'max_tokens' => 800, // Réduisez le nombre maximal de tokens
             'frequency_penalty' => 0.5,
             'presence_penalty' => 0.6,
             'n' => 1,

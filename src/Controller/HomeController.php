@@ -22,7 +22,7 @@ class HomeController extends AbstractController
     }
     
     #[Route('/', name: 'home')]
-    public function index(Request $request, OpenAiService $OpenAiService, YoutubeService $youtubeService, SessionInterface $session): Response
+    public function index(Request $request, OpenAiService $openAiService, YoutubeService $youtubeService, SessionInterface $session): Response
     {
         if (!$session->get('isAuthenticated')) {
             return $this->redirectToRoute('password_prompt');
@@ -36,7 +36,7 @@ class HomeController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $artistQuery = $form->get('artistQuery')->getData();
-            $artistSuggestions = $OpenAiService->getArtistSuggestions($artistQuery);
+            $artistSuggestions = $openAiService->getArtistSuggestions($artistQuery);
             $youtubeUrl = $youtubeService->searchVideo($artistQuery);
             return $this->render('home/artists.html.twig', [
                 'artistSuggestions' => $artistSuggestions ?? null,
