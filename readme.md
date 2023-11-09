@@ -1,7 +1,7 @@
 
 # ai-Music-suggestions-ChatGPT
 
-Symfony 6.2 webApp utilisant l'API d'[OpenAi ChatGPT-3.5-turbo](https://openai.com/product/gpt-4) et [HTMX](https://htmx.org/) pour générer une liste d'autres artistes similaires à partir d'un artiste donné.
+Symfony 6.2 webApp utilisant l'API d'[OpenAi ChatGPT-4-turbo](https://openai.com/blog/new-models-and-developer-products-announced-at-devday) et [HTMX](https://htmx.org/) pour générer une liste d'autres artistes similaires à partir d'un artiste donné.
 
 ## API Reference
 
