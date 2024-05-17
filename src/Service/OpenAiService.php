@@ -75,7 +75,7 @@ class OpenAiService
 
     $request = $openAiClient->chatCompletions()->create(
         new CreateRequest([
-            'model' => 'gpt-4-1106-preview',
+            'model' => 'gpt-4o',
             'messages' => $messages,
             'temperature' => 0.5, // Réduisez la valeur de la température
             'max_tokens' => 800, // Réduisez le nombre maximal de tokens
