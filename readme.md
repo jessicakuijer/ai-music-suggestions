@@ -8,13 +8,9 @@ Symfony 7.0.2 webApp utilisant l'API d'[OpenAi ChatGPT-4-turbo](https://openai.c
 #### Utilisation de l'API Tectalic OpenAI REST API Client
 
   https://github.com/tectalichq/public-openai-client-php
-
-## Demo
-
-DEMO : https://ai-music.herokuapp.com/
-Accès protégé par mot de passe. Si vous voulez tester, faites-moi signe ICI: https://linkedin.com/in/jessicakuijer ou par email: [@jessicakuijer](mailto:jessicakuijer@me.com)
   
-Description: Générateur d'artistes similaires à partir d'un artiste donné.
+### Description
+Générateur d'artistes similaires à partir d'un artiste donné.
 
 ## Installation
 Pré-requis:  
